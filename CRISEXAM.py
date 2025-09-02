@@ -39,13 +39,19 @@ if st.button("Compute"):
         final_grade -= (absences - 3)
 
     # Pass/Fail
-    status = "Passed: Move up" if final_grade >= 60 else "Failed"
+    status = "✅ Passed: Move up" if final_grade >= 60 else "❌ Failed"
 
     # Show result
     st.subheader(f"🎓 {name}")
-    st.write(f"**Prelim Grade:** {final_grade:.2f}")
+    st.write(f"**Final Grade:** {final_grade:.2f}")
     st.write(f"**Status:** {status}")
+
+    # Dean's Lister Reminder
+    if final_grade >= 90:
+        st.markdown("<h3 style='color:gold;'>⭐ Must be 90% to be a Dean's Lister ⭐</h3>", unsafe_allow_html=True)
 
     # Return button
     if st.button("🔄 Return"):
         st.experimental_rerun()
+
+
