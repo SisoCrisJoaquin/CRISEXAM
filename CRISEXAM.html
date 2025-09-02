@@ -1,0 +1,94 @@
+git init
+git add .
+git commit -m "Initial commit"
+
+git remote add origin https://github.com/SISOCRISJOAQUIN/CRISEXAM-grad.git
+git branch -M main
+git push -u origin main
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grading System</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px; 
+      background: url("9019808.jpg.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    form, #result { 
+      display: inline-block; 
+      padding: 20px; 
+      border-radius: 10px; 
+      background: rgba(0,0,0,0.6);
+    }
+    input, button { 
+      display: block; 
+      margin: 10px auto; 
+      padding: 8px; 
+      width: 200px; 
+      border-radius: 5px;
+      border: none;
+    }
+    button { 
+      background: gray; 
+      color: white; 
+      cursor: pointer;
+    }
+    button:hover { background: darkgray; }
+  </style>
+</head>
+<body>
+  <h1>Grading System</h1>
+  <form id="gradeForm" onsubmit="computeGrade(event)">
+    <input type="text" id="name" placeholder="Student Name" required>
+    <input type="number" id="prelim" placeholder="Prelim Grade" required>
+    <input type="number" id="quiz" placeholder="Quiz Grade" required>
+    <input type="number" id="recitation" placeholder="Recitation Grade" required>
+    <input type="number" id="absence" placeholder="Number of Absences" required>
+    <button type="submit">Compute</button>
+  </form>
+
+  <div id="result" style="display:none;"></div>
+
+  <script>
+    function computeGrade(event) {
+      event.preventDefault();
+
+      let name = document.getElementById("name").value;
+      let prelim = parseFloat(document.getElementById("prelim").value);
+      let quiz = parseFloat(document.getElementById("quiz").value);
+      let recitation = parseFloat(document.getElementById("recitation").value);
+      let absences = parseInt(document.getElementById("absence").value);
+
+      let final_grade = (prelim * 0.4) + (quiz * 0.3) + (recitation * 0.3);
+      if (absences > 3) final_grade -= (absences - 3);
+
+      let status = (final_grade >= 60) ? "Passed" : "Failed: ";
+
+      document.getElementById("gradeForm").style.display = "none";
+      document.getElementById("result").style.display = "block";
+      document.getElementById("result").innerHTML = `
+        <h2>${name}</h2>
+        <h3>Final Grade: ${final_grade.toFixed(2)}</h3>
+        <h3>Status: ${status}</h3>
+        <button onclick="restart()">🔄 Return</button>
+      `;
+    }
+
+    function restart() {
+      document.getElementById("gradeForm").reset();
+      document.getElementById("gradeForm").style.display = "block";
+      document.getElementById("result").style.display = "none";
+    }
+  </script>
+</body>
+</html>
