@@ -90,7 +90,7 @@ with st.container():
             final_grade = (prelim_grade + midterm_grade + finals_grade) / 3
 
             # Pass/Fail
-            status = "✅ Passed: Move up" if final_grade >= 60 else "❌ Failed"
+            status = "Passed: Move up" if final_grade >= 60 else "Failed"
 
             # Show result
             st.markdown("---")
@@ -103,7 +103,7 @@ with st.container():
 
             # Dean's Lister Reminder
             if final_grade >= 90:
-                st.markdown("<h3 style='color:gold;'>🎉 You qualify for the Dean's List!</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='color:whitesmoke;'>You qualify for the Dean's List!</h3>", unsafe_allow_html=True)
             elif final_grade >= 60:
                 st.markdown("<h4 style='color:whitesmoke;'>Need 90% for Dean's List.</h4>", unsafe_allow_html=True)
 
@@ -113,6 +113,7 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
