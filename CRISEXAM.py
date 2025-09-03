@@ -30,22 +30,23 @@ st.subheader("Prelim Grades")
 prelim = st.number_input("Prelim Exam", min_value=0.0, max_value=100.0, step=1.0)
 quiz = st.number_input("Prelim Quiz", min_value=0.0, max_value=100.0, step=1.0)
 recitation = st.number_input("Prelim Recitation", min_value=0.0, max_value=100.0, step=1.0)
-
+requirement = st.number_input("Prelim Requirement", min_value=0.0, max_value=100.0, step=1.0)
 
 st.subheader("Midterm Grades")
 midterm = st.number_input("Midterm Exam", min_value=0.0, max_value=100.0, step=1.0)
 mid_quiz = st.number_input("Midterm Quiz", min_value=0.0, max_value=100.0, step=1.0)
 mid_recitation = st.number_input("Midterm Recitation", min_value=0.0, max_value=100.0, step=1.0)
+mid_requirement = st.number_input("Midterm Requirement", min_value=0.0, max_value=100.0, step=1.0)
 
 absences = st.number_input("Number of Absences", min_value=0, step=1)
 
 # Compute button
 if st.button("Compute"):
     # Prelim calculation
-    prelim_grade = (prelim * 0.4) + (quiz * 0.3) + (recitation * 0.3)
+    prelim_grade = (prelim * 0.4) + (quiz * 0.25) + (recitation * 0.20) + (requirement * 0.15)
 
     # Midterm calculation
-    midterm_grade = (midterm * 0.4) + (mid_quiz * 0.3) + (mid_recitation * 0.3)
+    midterm_grade = (midterm * 0.4) + (mid_quiz * 0.25) + (mid_recitation * 0.20) + (mid_requirement * 0.15)
 
     # Final grade = average of prelim + midterm
     final_grade = (prelim_grade + midterm_grade) / 2
@@ -67,13 +68,14 @@ if st.button("Compute"):
 
     # Dean's Lister Reminder
     if final_grade >= 90:
-        st.markdown("<h3 style='color:whitesome;'>You qualify for the Dean's List!</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color:whitesmoke;'>You qualify for the Dean's List!</h3>", unsafe_allow_html=True)
     elif final_grade >= 60:
         st.markdown("<h4 style='color:whitesmoke;'>Keep aiming higher! Need 90% for Dean's List.</h4>", unsafe_allow_html=True)
 
     # Return button
     if st.button("🔄 Return"):
         st.experimental_rerun()
+
 
 
 
