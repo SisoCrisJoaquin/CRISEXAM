@@ -87,7 +87,7 @@ with st.container():
 
         # Dean's Lister Reminder
         if final_grade >= 90:
-            st.markdown("<h3 style='color:gold;'>You qualify for the Dean's List!</h3>", unsafe_allow_html=True)
+            st.markdown("<h3 style='color:whitesome;'>You qualify for the Dean's List!</h3>", unsafe_allow_html=True)
         elif final_grade >= 60:
             st.markdown("<h4 style='color:whitesmoke;'>Need 90% for Dean's List.</h4>", unsafe_allow_html=True)
 
