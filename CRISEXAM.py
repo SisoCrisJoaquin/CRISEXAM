@@ -75,7 +75,7 @@ with st.container():
         if prelim_absences >= 4 or midterm_absences >= 4 or final_absences >= 4:
             st.markdown("---")
             st.subheader(f"Results for {name}")
-            st.write("**Status:** ❌ Failed due to excessive absences (4 or more in a semester).")
+            st.write("**Status:** Failed due to excessive absences")
         else:
             # Prelim calculation
             prelim_grade = (prelim * 0.4) + (quiz * 0.25) + (recitation * 0.20) + (requirement * 0.15)
@@ -113,6 +113,7 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
