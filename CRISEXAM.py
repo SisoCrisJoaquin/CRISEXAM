@@ -71,11 +71,11 @@ with st.container():
         # Total absences check (auto fail if 5+)
         total_absences = prelim_absences + midterm_absences + final_absences
 
-        if total_absences >= 4:
+        if total_absences >= 5:
             st.markdown("---")
             st.subheader("Results")
             st.write(f"**Total Absences:** {total_absences}")
-            st.write("**Status:** Failed due to excessive total absences.")
+            st.write("**Status:** ❌ Failed due to excessive total absences (5 or more).")
         else:
             # Prelim calculation
             prelim_grade = (prelim * 0.4) + (quiz * 0.25) + (recitation * 0.20) + (requirement * 0.15)
@@ -86,11 +86,16 @@ with st.container():
             # Final calculation
             finals_grade = (final_exam * 0.4) + (final_quiz * 0.25) + (final_recitation * 0.20) + (final_requirement * 0.15)
 
-            # Final grade = average of prelim + midterm + finals
-            final_grade = (prelim_grade + midterm_grade + finals_grade) / 3
+            # Overall grade (just for display)
+            overall_grade = (prelim_grade + midterm_grade + finals_grade) / 3
 
-            # Pass/Fail
-            status = "Passed: Move up" if final_grade >= 60 else "Failed"
+            # Status and Dean's List depend only on PRELIM grade
+            if prelim_grade >= 90:
+                status = "✅ Passed - Dean's Lister!"
+            elif prelim_grade >= 60:
+                status = "✅ Passed"
+            else:
+                status = "❌ Failed"
 
             # Show result
             st.markdown("---")
@@ -98,15 +103,9 @@ with st.container():
             st.write(f"**Prelim Grade:** {prelim_grade:.2f}")
             st.write(f"**Midterm Grade:** {midterm_grade:.2f}")
             st.write(f"**Finals Grade:** {finals_grade:.2f}")
-            st.write(f"**Overall Grade:** {final_grade:.2f}")
+            st.write(f"**Overall Grade (info only):** {overall_grade:.2f}")
             st.write(f"**Total Absences:** {total_absences}")
             st.write(f"**Status:** {status}")
-
-            # Dean's Lister Reminder
-            if final_grade >= 90:
-                st.markdown("<h3 style='color:whitesmoke;'>You qualify for the Dean's List!</h3>", unsafe_allow_html=True)
-            elif final_grade >= 60:
-                st.markdown("<h4 style='color:whitesmoke;'>Need 90% for Dean's List.</h4>", unsafe_allow_html=True)
 
         # Return button
         if st.button("Return"):
@@ -114,6 +113,7 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
