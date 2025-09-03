@@ -114,7 +114,16 @@ with st.container():
             st.write(f"**Prelim Grade:** {prelim_grade:.2f}")
             st.write(f"**Midterm Grade:** {midterm_grade:.2f}")
             st.write(f"**Finals Grade:** {finals_grade:.2f}")
-            st.write(f"**Overall Gr**
+            st.write(f"**Overall Grade:** {overall_grade:.2f}")
+            st.write(f"**Total Absences:** {total_absences}")
+            st.markdown(f"**Status:** {status}")
+
+        # Return button
+        if st.button("Return"):
+            st.experimental_rerun()
+
+    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 
 
