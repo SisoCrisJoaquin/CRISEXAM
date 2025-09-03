@@ -43,7 +43,7 @@ with st.container():
     st.title("Sample Grading System")
 
     # Prelim
-    st.subheader("Prelim Grades")
+    st.subheader("Preliminary")
     prelim = st.number_input("Prelim Exam", min_value=0.0, max_value=100.0, step=1.0)
     quiz = st.number_input("Prelim Quiz", min_value=0.0, max_value=100.0, step=1.0)
     recitation = st.number_input("Prelim Recitation", min_value=0.0, max_value=100.0, step=1.0)
@@ -51,7 +51,7 @@ with st.container():
     prelim_absences = st.number_input("Prelim Absences", min_value=0, max_value=5, step=1)
 
     # Midterm
-    st.subheader("Midterm Grades")
+    st.subheader("Midterms")
     midterm = st.number_input("Midterm Exam", min_value=0.0, max_value=100.0, step=1.0)
     mid_quiz = st.number_input("Midterm Quiz", min_value=0.0, max_value=100.0, step=1.0)
     mid_recitation = st.number_input("Midterm Recitation", min_value=0.0, max_value=100.0, step=1.0)
@@ -59,7 +59,7 @@ with st.container():
     midterm_absences = st.number_input("Midterm Absences", min_value=0, max_value=5, step=1)
 
     # Finals
-    st.subheader("Final Grades")
+    st.subheader("Final")
     final_exam = st.number_input("Final Exam", min_value=0.0, max_value=100.0, step=1.0)
     final_quiz = st.number_input("Final Quiz", min_value=0.0, max_value=100.0, step=1.0)
     final_recitation = st.number_input("Final Recitation", min_value=0.0, max_value=100.0, step=1.0)
@@ -71,11 +71,11 @@ with st.container():
         # Total absences check (auto fail if 5+)
         total_absences = prelim_absences + midterm_absences + final_absences
 
-        if total_absences >= 5:
+        if total_absences >= 3:
             st.markdown("---")
             st.subheader("Results")
             st.write(f"**Total Absences:** {total_absences}")
-            st.write("**Status:** ❌ Failed due to excessive total absences (5 or more).")
+            st.write("**Status:** Failed due to excessive total absences")
         else:
             # Prelim calculation
             prelim_grade = (prelim * 0.4) + (quiz * 0.25) + (recitation * 0.20) + (requirement * 0.15)
@@ -91,11 +91,11 @@ with st.container():
 
             # Status and Dean's List depend only on PRELIM grade
             if prelim_grade >= 90:
-                status = "✅ Passed - Dean's Lister!"
+                status = "Passed - Qualified for Dean's Lister!"
             elif prelim_grade >= 60:
-                status = "✅ Passed"
+                status = "Passed: move up"
             else:
-                status = "❌ Failed"
+                status = "Failed"
 
             # Show result
             st.markdown("---")
@@ -103,7 +103,7 @@ with st.container():
             st.write(f"**Prelim Grade:** {prelim_grade:.2f}")
             st.write(f"**Midterm Grade:** {midterm_grade:.2f}")
             st.write(f"**Finals Grade:** {finals_grade:.2f}")
-            st.write(f"**Overall Grade (info only):** {overall_grade:.2f}")
+            st.write(f"**Overall Grade:** {overall_grade:.2f}")
             st.write(f"**Total Absences:** {total_absences}")
             st.write(f"**Status:** {status}")
 
@@ -113,6 +113,7 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
