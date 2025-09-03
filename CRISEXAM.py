@@ -40,7 +40,7 @@ with st.container():
     st.markdown('<div class="block-container">', unsafe_allow_html=True)
 
     # Title
-    st.title("📘 Sample Grading System")
+    st.title("Sample Grading System")
 
     # Student name
     name = st.text_input("Student Name")
@@ -113,6 +113,7 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
