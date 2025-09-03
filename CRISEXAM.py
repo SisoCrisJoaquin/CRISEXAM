@@ -42,9 +42,6 @@ with st.container():
     # Title
     st.title("Sample Grading System")
 
-    # Student name
-    name = st.text_input("Student Name")
-
     # Prelim
     st.subheader("Prelim Grades")
     prelim = st.number_input("Prelim Exam", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
@@ -94,7 +91,6 @@ with st.container():
 
             # Show result
             st.markdown("---")
-            st.subheader(f"Results for {name}")
             st.write(f"**Prelim Grade:** {prelim_grade:.2f}")
             st.write(f"**Midterm Grade:** {midterm_grade:.2f}")
             st.write(f"**Finals Grade:** {finals_grade:.2f}")
@@ -113,6 +109,7 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
