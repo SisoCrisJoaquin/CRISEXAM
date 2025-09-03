@@ -99,7 +99,7 @@ with st.container():
                 required_avg_next = remaining_needed / 2  # for midterm + finals
 
                 if required_avg_next > 100:
-                    status = (f"Passed (Prelim Grade: {prelim_grade:.2f})\n"
+                    status = (f"Passed)\n"
                               f"For Dean's List (would require {required_avg_next:.2f})")
                 else:
                     status = (f"Passed (Prelim Grade: {prelim_grade:.2f})\n"
@@ -124,6 +124,7 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
