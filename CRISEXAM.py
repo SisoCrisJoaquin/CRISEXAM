@@ -87,7 +87,7 @@ with st.container():
             finals_grade = (final_exam * 0.4) + (final_quiz * 0.25) + (final_recitation * 0.20) + (final_requirement * 0.15)
 
             # Final grade = average of prelim + midterm + finals
-            final_grade = (prelim_grade + midterm_grade + finals_grade) / 3
+            final_grade = (prelim_grade * 0.2) + (midterm_grade * 0.3) + (finals_grade * 0.5) / 3
 
             # Pass/Fail
             status = "Passed: Move up" if final_grade >= 60 else "Failed"
@@ -114,6 +114,7 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
