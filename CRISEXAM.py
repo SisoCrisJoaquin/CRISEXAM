@@ -75,7 +75,7 @@ with st.container():
             st.markdown("---")
             st.subheader("Results")
             st.write(f"**Total Absences:** {total_absences}")
-            st.write("**Status:**Failed due to excessive total absences.")
+            st.write("**Status:** Failed due to excessive total absences.")
         else:
             # Prelim calculation
             prelim_grade = (prelim * 0.4) + (quiz * 0.25) + (recitation * 0.20) + (requirement * 0.15)
@@ -114,6 +114,7 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
