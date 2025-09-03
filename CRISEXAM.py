@@ -21,7 +21,7 @@ def add_bg_from_local(image_file):
 add_bg_from_local("9019808.jpg")
 
 # Title
-st.title("📘 Sample Grading System")
+st.title("Sample Grading System")
 
 # Input fields
 name = st.text_input("Student Name")
@@ -30,6 +30,7 @@ st.subheader("Prelim Grades")
 prelim = st.number_input("Prelim Exam", min_value=0.0, max_value=100.0, step=1.0)
 quiz = st.number_input("Prelim Quiz", min_value=0.0, max_value=100.0, step=1.0)
 recitation = st.number_input("Prelim Recitation", min_value=0.0, max_value=100.0, step=1.0)
+absences = st.number_input("Number of Absences", min_value=0, step=1)
 
 st.subheader("Midterm Grades")
 midterm = st.number_input("Midterm Exam", min_value=0.0, max_value=100.0, step=1.0)
@@ -54,7 +55,7 @@ if st.button("Compute"):
         final_grade -= (absences - 3)
 
     # Pass/Fail
-    status = "✅ Passed: Move up" if final_grade >= 60 else "❌ Failed"
+    status = "Passed: Move up" if final_grade >= 60 else "Failed"
 
     # Show result
     st.markdown("---")
@@ -66,13 +67,14 @@ if st.button("Compute"):
 
     # Dean's Lister Reminder
     if final_grade >= 90:
-        st.markdown("<h3 style='color:gold;'>🎉 Congratulations! You qualify for the Dean's List!</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color:whitesome;'>You qualify for the Dean's List!</h3>", unsafe_allow_html=True)
     elif final_grade >= 60:
         st.markdown("<h4 style='color:whitesmoke;'>Keep aiming higher! Need 90% for Dean's List.</h4>", unsafe_allow_html=True)
 
     # Return button
     if st.button("🔄 Return"):
         st.experimental_rerun()
+
 
 
 
