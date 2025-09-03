@@ -30,7 +30,7 @@ st.subheader("Prelim Grades")
 prelim = st.number_input("Prelim Exam", min_value=0.0, max_value=100.0, step=1.0)
 quiz = st.number_input("Prelim Quiz", min_value=0.0, max_value=100.0, step=1.0)
 recitation = st.number_input("Prelim Recitation", min_value=0.0, max_value=100.0, step=1.0)
-absences = st.number_input("Number of Absences", min_value=0, step=1)
+
 
 st.subheader("Midterm Grades")
 midterm = st.number_input("Midterm Exam", min_value=0.0, max_value=100.0, step=1.0)
@@ -74,6 +74,7 @@ if st.button("Compute"):
     # Return button
     if st.button("🔄 Return"):
         st.experimental_rerun()
+
 
 
 
