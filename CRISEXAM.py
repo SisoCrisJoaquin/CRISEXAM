@@ -44,35 +44,38 @@ with st.container():
 
     # Prelim
     st.subheader("Prelim Grades")
-    prelim = st.number_input("Prelim Exam", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    quiz = st.number_input("Prelim Quiz", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    recitation = st.number_input("Prelim Recitation", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    requirement = st.number_input("Prelim Requirement", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    prelim_absences = st.number_input("Prelim Absences", min_value=0, step=1, format="%d")
+    prelim = st.number_input("Prelim Exam", min_value=0.0, max_value=100.0, step=1.0)
+    quiz = st.number_input("Prelim Quiz", min_value=0.0, max_value=100.0, step=1.0)
+    recitation = st.number_input("Prelim Recitation", min_value=0.0, max_value=100.0, step=1.0)
+    requirement = st.number_input("Prelim Requirement", min_value=0.0, max_value=100.0, step=1.0)
+    prelim_absences = st.number_input("Prelim Absences", min_value=0, max_value=5, step=1)
 
     # Midterm
     st.subheader("Midterm Grades")
-    midterm = st.number_input("Midterm Exam", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    mid_quiz = st.number_input("Midterm Quiz", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    mid_recitation = st.number_input("Midterm Recitation", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    mid_requirement = st.number_input("Midterm Requirement", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    midterm_absences = st.number_input("Midterm Absences", min_value=0, step=1, format="%d")
+    midterm = st.number_input("Midterm Exam", min_value=0.0, max_value=100.0, step=1.0)
+    mid_quiz = st.number_input("Midterm Quiz", min_value=0.0, max_value=100.0, step=1.0)
+    mid_recitation = st.number_input("Midterm Recitation", min_value=0.0, max_value=100.0, step=1.0)
+    mid_requirement = st.number_input("Midterm Requirement", min_value=0.0, max_value=100.0, step=1.0)
+    midterm_absences = st.number_input("Midterm Absences", min_value=0, max_value=5, step=1)
 
     # Finals
     st.subheader("Final Grades")
-    final_exam = st.number_input("Final Exam", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    final_quiz = st.number_input("Final Quiz", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    final_recitation = st.number_input("Final Recitation", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    final_requirement = st.number_input("Final Requirement", min_value=0.0, max_value=100.0, step=1.0, format="%.1f")
-    final_absences = st.number_input("Final Absences", min_value=0, step=1, format="%d")
+    final_exam = st.number_input("Final Exam", min_value=0.0, max_value=100.0, step=1.0)
+    final_quiz = st.number_input("Final Quiz", min_value=0.0, max_value=100.0, step=1.0)
+    final_recitation = st.number_input("Final Recitation", min_value=0.0, max_value=100.0, step=1.0)
+    final_requirement = st.number_input("Final Requirement", min_value=0.0, max_value=100.0, step=1.0)
+    final_absences = st.number_input("Final Absences", min_value=0, max_value=5, step=1)
 
     # Compute button
     if st.button("Compute"):
-        # Absence check (auto fail if 4+ absences in any term)
-        if prelim_absences >= 4 or midterm_absences >= 4 or final_absences >= 4:
+        # Total absences check (auto fail if 5+)
+        total_absences = prelim_absences + midterm_absences + final_absences
+
+        if total_absences >= 5:
             st.markdown("---")
-            st.subheader(f"Results for {name}")
-            st.write("**Status:** Failed due to excessive absences")
+            st.subheader("Results")
+            st.write(f"**Total Absences:** {total_absences}")
+            st.write("**Status:** ❌ Failed due to excessive total absences (5 or more).")
         else:
             # Prelim calculation
             prelim_grade = (prelim * 0.4) + (quiz * 0.25) + (recitation * 0.20) + (requirement * 0.15)
@@ -91,10 +94,12 @@ with st.container():
 
             # Show result
             st.markdown("---")
+            st.subheader("Results")
             st.write(f"**Prelim Grade:** {prelim_grade:.2f}")
             st.write(f"**Midterm Grade:** {midterm_grade:.2f}")
             st.write(f"**Finals Grade:** {finals_grade:.2f}")
             st.write(f"**Overall Grade:** {final_grade:.2f}")
+            st.write(f"**Total Absences:** {total_absences}")
             st.write(f"**Status:** {status}")
 
             # Dean's Lister Reminder
@@ -109,6 +114,8 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
+
 
 
 
