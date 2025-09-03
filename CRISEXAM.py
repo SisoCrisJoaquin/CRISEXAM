@@ -71,7 +71,7 @@ with st.container():
         # Total absences check (auto fail if 5+)
         total_absences = prelim_absences + midterm_absences + final_absences
 
-        if total_absences >= 5:
+        if total_absences >= 4:
             st.markdown("---")
             st.subheader("Results")
             st.write(f"**Total Absences:** {total_absences}")
@@ -114,6 +114,7 @@ with st.container():
 
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
